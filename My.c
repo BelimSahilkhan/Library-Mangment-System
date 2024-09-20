@@ -1,123 +1,78 @@
-#include<iostream>
-#include<string.h>
-using namespace std;
-class my
-{
-	string title;
-	string author;
-	int bookid;
-	float price;
-	static int total;
-	public:
-		my(string t,string a,int id,float p)
-		{
-			title=t;
-			author=a;
-			bookid=id;
-			price=p;
-			total++;
-		}
-		
-		friend void displayBookdetails(const my&b);	
-};
-void displayBookdetails(const my&b)
-{
-	cout<<"BookId:"<<b.bookid<<endl;
-	cout <<"Title:"<<b.title<<endl; 
-	cout<<"Author:"<<b.author<<endl;
-	cout<<"Price:"<<b.price<<endl;
-}
-int main()
-{
-	static int total;
-	cout<<"Enter the number of book:";
-	cin>>total;
-	string title,author;
-	int bookid;
-	float price;
-	for(int i=0;i<total;i++)
-	{
-		
-		cout<<"Enter Details of Book"<<i+1<<":"<<endl;
-		cout<<"Title:";
-		cin>>title;
-		cout<<"Author:";
-		cin>>author;
-		cout<<"Book Id:";
-		cin>>bookid;
-		cout<<"Price:";
-		cin>>price;
-	}
-	for(int i=0;i<total;i++)
-	{
-		cout<<"\nDetails of Book"<<i+1<<":"<<endl;
-		cout<<"Title is:"<<title<<endl;
-		cout<<"Author is:"<<author<<endl;
-		cout<<"BookId is:"<<bookid<<endl;
-		cout<<"Price is:"<<price<<endl;
-	}
-		cout<<"Total Number of Books in The Libary=>"<<total;
-//	cout<<total;
-	return 0;
-}#include<iostream>
-#include<string.h>
-using namespace std;
-class my
-{
-	string title;
-	string author;
-	int bookid;
-	float price;
-	static int bookcount;
-	public:
-		my(string t,string a,int id,float p)
-		{
-			title=t;
-			author=a;
-			bookid=id;
-			price=p;
-			bookcount++;
-		}
-		
-		friend void displayBookdetails(const my&b);	
-};
-void displayBookdetails(const my&b)
-{
-	cout<<"BookId:"<<b.bookid<<endl;
-	cout <<"Title:"<<b.title<<endl; 
-	cout<<"Author:"<<b.author<<endl;
-	cout<<"Price:"<<b.price<<endl;
-}
-int main()
-{
-	int no;
-	cout<<"Enter the number of book:";
-	cin>>no;
-	string title,author;
-	int bookid;
-	float price;
-	for(int i=0;i<no;i++)
-	{
-		
-		cout<<"Enter Details of Book"<<i+1<<":"<<endl;
-		cout<<"Title:";
-		cin>>title;
-		cout<<"Author:";
-		cin>>author;
-		cout<<"Book Id:";
-		cin>>bookid;
-		cout<<"Price:";
-		cin>>price;
-	}
-	for(int i=0;i<no;i++)
-	{
-		cout<<"\nDetails of Book"<<i+1<<":"<<endl;
-		cout<<"Title is:"<<title<<endl;
-		cout<<"Author is:"<<author<<endl;
-		cout<<"BookId is:"<<bookid<<endl;
-		cout<<"Price is:"<<price<<endl;
-	}
-		cout<<"Total Number of Books in The Libary=>"<<no;
-//	cout<<total;
-	return 0;
+#include<iostream> 
+using namespace std; 
+class my 
+{ 
+    public:
+    int no[100]; 
+    string title[100],author[100];
+    int bookid[100];
+    float price[100];
+ public: 
+  void set_data();  
+  friend void get_data(my ob); 
+   
+}; 
+
+void my::set_data() 
+{ 
+  
+ cout<<"Enter the number of book:"; 
+ cin>>no[0]; 
+ for(int i=0;i<no[0];i++) 
+ { 
+   
+  cout<<"Enter Details of Book"<<i+1<<":"<<endl; 
+  cout<<"Title:"; 
+  cin>>title[i]; 
+  cout<<"Author:"; 
+  cin>>author[i]; 
+  cout<<"Book Id:"; 
+  cin>>bookid[i]; 
+  cout<<"Price:"; 
+  cin>>price[i]; 
+ } 
+} 
+void get_data(my ob) 
+{ 
+  int no1[100];
+ for(int i=0;i<no1[0];i++) 
+ { 
+  cout<<"--------All Book Details-------";
+  cout<<"\nDetails of Book"<<i+1<<":"<<endl; 
+  cout<<"Title is:"<<ob.title[i]<<endl; 
+  cout<<"Author is:"<<ob.author[i]<<endl; 
+  cout<<"BookId is:"<<ob.bookid[i]<<endl; 
+  cout<<"Price is:"<<ob.price[i]<<endl; 
+  cout<<endl; 
+  cout<<"Total Number of Books in The Libary=>"<<no1[i]<<endl; 
+ } 
+ 
+} 
+int main() 
+{ 
+ int ch; 
+ my ob;
+ my ob1;
+ do 
+ { 
+  cout<<"1.Add Book:\n2.Display\n3.Exit\n"; 
+  cout<<"Enter Your choose:"; 
+  cin>>ch; 
+   
+  switch(ch) 
+  { 
+   case 1: 
+   ob1.set_data(); 
+   break; 
+     
+   case 2: 
+   get_data(ob); 
+   break; 
+      
+   case 3: 
+   return 0; 
+   break; 
+  } 
+ }while(ch!=4); 
+ return 0; 
 }
